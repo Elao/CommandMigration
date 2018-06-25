@@ -64,6 +64,11 @@ The `elao:command-migration:run` command :
 
 - Store migration identifier in `command_migration` database table.
 
+## Clean old migrations
+
+When the commands have been deployed and ran on production environment, you can (manually) delete the entries in
+`elao_command_migration.migrations`.
+
 ## Integration with Capifony
 
 Set in deploy.rb:
