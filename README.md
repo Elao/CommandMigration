@@ -14,11 +14,20 @@ This bundle allow you to declare in your feature git branch what command(s) need
 
     $ composer require elao/elao-command-migration-bundle
 
-Add a config/packages/elao_command_migration.yaml (or added by the recipe):
+Add a `config/packages/elao_command_migration.yaml` (or added by the recipe):
 
 ```yaml
     elao_command_migration:
-        database_name: 'command_migration'
+        adapter:
+            type: dbal
+            options:
+                driver:    pdo_mysql
+                host:      "%database_host%"
+                port:      "%database_port%"
+                dbname:    "%database_name%"
+                user:      "%database_user%"
+                password:  "%database_password%"
+                tablename: "command_migration"
 ```
 
 Add `php bin/console elao:command-migration:run` to your deployment process (see below for integration with Capifony or Ansible).
