@@ -21,7 +21,7 @@ Add a config/packages/elao_command_migration.yaml (or added by the recipe):
         database_name: 'command_migration'
 ```
 
-Add `php bin/console elao:command-migration:run` to your deployment process (see below for integration with Capifony).
+Add `php bin/console elao:command-migration:run` to your deployment process (see below for integration with Capifony or Ansible).
 
 ## Usage
 
@@ -69,7 +69,9 @@ The `elao:command-migration:run` command :
 When the commands have been deployed and ran on production environment, you can (manually) delete the entries in
 `elao_command_migration.migrations`.
 
-## Integration with Capifony
+## Integration
+
+### Capifony
 
 Set in deploy.rb:
 
@@ -83,4 +85,13 @@ Set in deploy.rb:
         capifony_puts_ok
       end
     end
+```
+
+### Ansible
+
+With [Manala/ansible-role-deploy](https://github.com/manala/ansible-role-deploy), add in `ansible/group_vars/deploy.yml`:
+
+```yaml
+    manala_deploy_tasks:
+      - command: bin/console elao:command-migration:run
 ```
