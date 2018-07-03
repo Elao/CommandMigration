@@ -104,3 +104,10 @@ With [Manala/ansible-role-deploy](https://github.com/manala/ansible-role-deploy)
     manala_deploy_tasks:
       - command: bin/console elao:command-migration:run
 ```
+
+or
+
+```yaml
+    manala_deploy_post_tasks:
+      - command: bin/console elao:command-migration:run
+```
