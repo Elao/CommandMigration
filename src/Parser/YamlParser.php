@@ -2,14 +2,34 @@
 
 namespace Elao\ElaoCommandMigration\Parser;
 
+use Elao\ElaoCommandMigration\Parser\Exception\InvalidYamlSchemaException;
+use Symfony\Component\Yaml\Yaml;
+
 class YamlParser implements ParserInterface
 {
+    /** @var Yaml */
+    private $yaml;
+
+    /** @var string */
+    private $filePath;
+
+    public function __construct(Yaml $yaml, string $filePath)
+    {
+        $this->yaml = $yaml;
+        $this->filePath = $filePath;
+    }
+
     public function getMigrations(): array
     {
-        return [
-            '1234567' => ['php bin/console cache:clear'],
-            '20180823161327' => ['php -r "echo \"hello\";"'],
-        ];
+        $commandMigrations = $this->yaml->parseFile($this->filePath);
+
+        if (!isset($commandMigrations['elao_command_migration']['migrations'])
+            || !is_array($commandMigrations['elao_command_migration']['migrations'])
+        ) {
+            throw new InvalidYamlSchemaException('Missing migrations node');
+        }
+
+        return $commandMigrations['elao_command_migration']['migrations'];
     }
 
     public function getVersions(): array

@@ -1,0 +1,4 @@
+elao_command_migration:
+    migrations:
+        whateverUniqueIdentifier:
+            - php -r "echo \"Hello\";"
