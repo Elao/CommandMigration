@@ -3,26 +3,20 @@
 namespace Elao\ElaoCommandMigration\Migration;
 
 use Elao\ElaoCommandMigration\Adapter\AdapterInterface;
-use Elao\ElaoCommandMigration\Parser\ParserInterface;
 
 class GetNotExecutedMigrations
 {
     /** @var AdapterInterface */
     private $adapter;
 
-    /** @var ParserInterface */
-    private $parser;
-
-    public function __construct(AdapterInterface $adapter, ParserInterface $parser)
+    public function __construct(AdapterInterface $adapter)
     {
         $this->adapter = $adapter;
-        $this->parser = $parser;
     }
 
-    public function __invoke(): array
+    public function __invoke(array $migrations, array $versions): array
     {
-        $migrations = $this->parser->getMigrations();
-        $notExecutedVersions = array_diff($this->parser->getVersions(), $this->adapter->getMigratedVersions());
+        $notExecutedVersions = array_diff($versions, $this->adapter->getMigratedVersions());
         $migrationsToExecute = [];
 
         foreach ($notExecutedVersions as $version) {

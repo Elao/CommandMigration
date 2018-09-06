@@ -7,11 +7,18 @@ use Doctrine\DBAL\Connections\MasterSlaveConnection;
 use Doctrine\DBAL\Schema\Column;
 use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Types\Type;
+use Elao\ElaoCommandMigration\Configuration\Factory\Doctrine\DBALConnectionFactory;
 
 final class DoctrineAdapter implements AdapterInterface
 {
+    public const TABLE_NAME = 'command_migrations';
+    public const COLUMN_NAME = 'version';
+
     /** @var Connection */
     private $connection;
+
+    /** @var string */
+    private $dsn;
 
     /** @var string */
     private $migrationsTableName;
@@ -20,11 +27,11 @@ final class DoctrineAdapter implements AdapterInterface
     private $migrationsColumnName;
 
     public function __construct(
-        Connection $connection,
-        string $migrationsTableName = 'command_migrations',
-        string $migrationsColumnName = 'version'
+        string $dsn,
+        string $migrationsTableName,
+        string $migrationsColumnName
     ) {
-        $this->connection = $connection;
+        $this->dsn = $dsn;
         $this->migrationsTableName = $migrationsTableName;
         $this->migrationsColumnName = $migrationsColumnName;
     }
@@ -32,6 +39,7 @@ final class DoctrineAdapter implements AdapterInterface
     public function initialize(): void
     {
         $this->connect();
+
         if ($this->connection->getSchemaManager()->tablesExist([$this->migrationsTableName])) {
             return;
         }
@@ -82,6 +90,8 @@ final class DoctrineAdapter implements AdapterInterface
      */
     private function connect(): bool
     {
+        $this->connection = (new DBALConnectionFactory($this->dsn))->getConnection();
+
         if ($this->connection instanceof MasterSlaveConnection) {
             return $this->connection->connect('master');
         }

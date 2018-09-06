@@ -7,29 +7,32 @@ use Symfony\Component\Yaml\Yaml;
 
 class YamlParser implements ParserInterface
 {
-    /** @var Yaml */
-    private $yaml;
+    /** @var mixed */
+    private $configuration;
 
-    /** @var string */
-    private $filePath;
-
-    public function __construct(Yaml $yaml, string $filePath)
+    public function __construct(string $filePath)
     {
-        $this->yaml = $yaml;
-        $this->filePath = $filePath;
+        $this->configuration = Yaml::parseFile($filePath);
+    }
+
+    public function getAdapterConfiguration(): array
+    {
+        if (!isset($this->configuration['elao_command_migration']['adapter'])) {
+            throw new InvalidYamlSchemaException('Missing adapter node');
+        }
+
+        return $this->configuration['elao_command_migration']['adapter'];
     }
 
     public function getMigrations(): array
     {
-        $commandMigrations = $this->yaml->parseFile($this->filePath);
-
-        if (!isset($commandMigrations['elao_command_migration']['migrations'])
-            || !is_array($commandMigrations['elao_command_migration']['migrations'])
+        if (!isset($this->configuration['elao_command_migration']['migrations'])
+            || !is_array($this->configuration['elao_command_migration']['migrations'])
         ) {
             throw new InvalidYamlSchemaException('Missing migrations node');
         }
 
-        return $commandMigrations['elao_command_migration']['migrations'];
+        return $this->configuration['elao_command_migration']['migrations'];
     }
 
     public function getVersions(): array

@@ -1,0 +1,11 @@
+elao_command_migration:
+    adapter:
+        type: dbal
+        dsn: mysql://root@127.0.0.1/my_database
+        table_name: 'command_migrations'
+    migrations:
+        201809061100020:
+            - php -r "echo \"toto\";"
+            - php -r "echo \"Salut Mathieu\";"
+        201809051738230:
+            - php -r "echo \"This is a test\";"

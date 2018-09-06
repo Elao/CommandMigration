@@ -55,6 +55,10 @@ final class DBALConnectionFactory
             $this->connection->connect();
         }
 
+        if (!$this->connection instanceof Connection) {
+            throw new ConnectionException('Connection failed');
+        }
+
         return $this->connection;
     }
 
