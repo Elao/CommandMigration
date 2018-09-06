@@ -111,3 +111,7 @@ or
     manala_deploy_post_tasks:
       - command: bin/console elao:command-migration:run
 ```
+
+### Who is using it?
+
+- [Vimeet](http://vimeet.events/)
