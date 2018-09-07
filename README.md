@@ -48,11 +48,11 @@ elao_command_migration:
 
 Entries in `migrations` could have whatever identifier, but we recommend to use a date + time format: YYYYMMDDHHMMSS
 
-Run `php bin/elaoCommandMigration elao:command-migration:run path/to/elao_command_migration.yaml` to test it.
+Run `php bin/elaoCommandMigration path/to/elao_command_migration.yaml` to test it.
 
 ## Integration
 
-Add `php bin/elaoCommandMigration elao:command-migration:run path/to/elao_command_migration.yaml`
+Add `php bin/elaoCommandMigration path/to/elao_command_migration.yaml`
 to your deployment process.
 
 ### Capifony
@@ -77,14 +77,14 @@ With [Manala/ansible-role-deploy](https://github.com/manala/ansible-role-deploy)
 
 ```yaml
     manala_deploy_tasks:
-      - command: bin/console elao:command-migration:run
+      - command: php bin/elaoCommandMigration path/to/elao_command_migration.yaml
 ```
 
 or
 
 ```yaml
     manala_deploy_post_tasks:
-      - command: bin/console elao:command-migration:run
+      - command: php bin/elaoCommandMigration path/to/elao_command_migration.yaml
 ```
 
 ## How it works
