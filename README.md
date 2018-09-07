@@ -1,6 +1,6 @@
 # ElaoCommandMigration
 
-PHP lib to run commands, for example on deployment.
+PHP library to run commands, for example on deployment.
 
 ## Why
 
@@ -8,7 +8,7 @@ Sometimes, on deployment or when switching to a branch, we need to run some migr
 for example reindex a database, calculate aggregation, remove whatever uploaded files...
 
 Do not do it manually anymore by connecting to your server in ssh!
-This bundle allow you to declare in your feature git branch what command(s) need to be run once deployed.
+This library allow you to declare in your feature git branch what command(s) need to be run once deployed.
 
 ## Install
 
@@ -65,7 +65,7 @@ Set in deploy.rb:
     namespace :app_tasks do
       task :elao_command_migration do
         capifony_pretty_print "--> Run command migrations"
-        invoke_command "php bin/console elao:command-migration:run", :via => run_method
+        invoke_command "php bin/elaoCommandMigration path/to/elao_command_migration.yaml", :via => run_method
         capifony_puts_ok
       end
     end
