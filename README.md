@@ -61,7 +61,7 @@ Set in deploy.rb:
 
 ```rb
     after :deploy, 'app_tasks:elao_command_migration'
-    
+
     namespace :app_tasks do
       task :elao_command_migration do
         capifony_pretty_print "--> Run command migrations"
@@ -94,9 +94,9 @@ for running commands.
 
 The `elao:command-migration:run` command :
 
-- Fetch all migrations already ran from `command_migration` database table
+- Fetch all migrations already ran from `command_migrations` database table
 - Get only migrations not already ran from `elao_command_migration.migrations`
-- Store migration identifier in `command_migration` database table.
+- Store migration identifier in `command_migrations` database table.
 
 ## Clean old migrations
 
@@ -105,5 +105,4 @@ When the commands have been deployed and ran on production environment, you can 
 
 ## Who is using it?
 
-- [Vimeet](http://vimeet.events/)
-
+- [Vimeet](https://vimeet.events/)
