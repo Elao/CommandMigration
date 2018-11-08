@@ -1,0 +1,51 @@
+{
+    "name": "elao/elao-command-migration",
+    "description": "PHP lib to run commands, for example on deployment.",
+    "license": "MIT",
+    "keywords": [],
+    "authors": [
+        {
+            "name": "Elao",
+            "homepage": "https://www.elao.com"
+        },
+        {
+            "name": "Nicolas Dievart",
+            "homepage": "https://github.com/NicolasDievart"
+        },
+        {
+            "name": "Cindy Liwenge",
+            "homepage": "https://github.com/Kinedie"
+        },
+        {
+            "name": "Richard Hanna",
+            "homepage": "https://github.com/supertanuki"
+        },
+        {
+            "name": "Mathieu Marchois",
+            "homepage": "https://github.com/mmarchois"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Elao\\ElaoCommandMigration\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Elao\\ElaoCommandMigration\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "php": ">=7.2.0",
+        "doctrine/dbal": "v2.8.0",
+        "symfony/console": "~4.1",
+        "symfony/event-dispatcher": "~4.1",
+        "symfony/process": "~4.1",
+        "symfony/yaml": "~4.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0",
+        "friendsofphp/php-cs-fixer": "^2.13"
+    },
+    "bin": ["bin/elaoCommandMigration"]
+}

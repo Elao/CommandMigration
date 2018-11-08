@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Elao\ElaoCommandMigration\Command\RunCommand;
+use Symfony\Component\Console\Application;
+
+$runCommand = new RunCommand();
+$application = new Application();
+$application->add($runCommand);
+$application->setDefaultCommand($runCommand->getName(), true);
+$application->run();

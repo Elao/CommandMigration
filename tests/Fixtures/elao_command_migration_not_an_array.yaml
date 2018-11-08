@@ -1,0 +1,6 @@
+elao_command_migration:
+    storage:
+        type: dbal
+        dsn: mysql://root@127.0.0.1/my_database
+        table_name: 'command_migrations'
+    migrations: 201809061100020
