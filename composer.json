@@ -3,7 +3,28 @@
     "description": "PHP lib to run commands, for example on deployment.",
     "license": "MIT",
     "keywords": [],
-    "authors": [],
+    "authors": [
+        {
+            "name": "Elao",
+            "homepage": "https://www.elao.com"
+        },
+        {
+            "name": "Nicolas Dievart",
+            "homepage": "https://github.com/NicolasDievart"
+        },
+        {
+            "name": "Cindy Liwenge",
+            "homepage": "https://github.com/Kinedie"
+        },
+        {
+            "name": "Richard Hanna",
+            "homepage": "https://github.com/supertanuki"
+        },
+        {
+            "name": "Mathieu Marchois",
+            "homepage": "https://github.com/mmarchois"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Elao\\ElaoCommandMigration\\": "src"
