@@ -2,19 +2,19 @@
 
 namespace Elao\ElaoCommandMigration\Subscriber;
 
-use Elao\ElaoCommandMigration\Adapter\AdapterInterface;
+use Elao\ElaoCommandMigration\Storage\StorageInterface;
 use Elao\ElaoCommandMigration\Event\MigrationExecutedEvent;
 use Elao\ElaoCommandMigration\Events;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class MigrationExecutedSubscriber implements EventSubscriberInterface
 {
-    /** @var AdapterInterface */
-    private $adapter;
+    /** @var StorageInterface */
+    private $storage;
 
-    public function __construct(AdapterInterface $adapter)
+    public function __construct(StorageInterface $storage)
     {
-        $this->adapter = $adapter;
+        $this->storage = $storage;
     }
 
     public static function getSubscribedEvents(): array
@@ -26,6 +26,6 @@ class MigrationExecutedSubscriber implements EventSubscriberInterface
 
     public function onMigrationExecuted(MigrationExecutedEvent $event): void
     {
-        $this->adapter->markVersion($event->getVersion());
+        $this->storage->markVersion($event->getVersion());
     }
 }

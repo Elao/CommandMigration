@@ -3,6 +3,7 @@
 namespace Elao\ElaoCommandMigration\Configuration\Factory\Doctrine;
 
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\ConnectionException;
 use Doctrine\DBAL\DriverManager;
 
 final class DBALConnectionFactory

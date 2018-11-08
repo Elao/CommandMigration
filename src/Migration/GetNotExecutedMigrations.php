@@ -2,14 +2,14 @@
 
 namespace Elao\ElaoCommandMigration\Migration;
 
-use Elao\ElaoCommandMigration\Adapter\AdapterInterface;
+use Elao\ElaoCommandMigration\Storage\StorageInterface;
 
 class GetNotExecutedMigrations
 {
-    /** @var AdapterInterface */
+    /** @var StorageInterface */
     private $adapter;
 
-    public function __construct(AdapterInterface $adapter)
+    public function __construct(StorageInterface $adapter)
     {
         $this->adapter = $adapter;
     }

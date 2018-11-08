@@ -2,7 +2,8 @@
 
 namespace Elao\ElaoCommandMigration\Process;
 
-use Elao\ElaoCommandMigration\Adapter\AdapterFactory;
+use Elao\ElaoCommandMigration\Adapter\ProcessAdapter;
+use Elao\ElaoCommandMigration\Storage\StorageFactory;
 use Elao\ElaoCommandMigration\Migration\GetNotExecutedMigrations;
 use Elao\ElaoCommandMigration\Parser\YamlParser;
 use Elao\ElaoCommandMigration\Subscriber\MigrationExecutedSubscriber;
@@ -21,19 +22,19 @@ class Run
     public function __invoke(): \Generator
     {
         $yaml = new YamlParser($this->configurationFilePath);
-        $adapterFactory = new AdapterFactory();
-        $adapter = $adapterFactory->create($yaml->getAdapterConfiguration());
+        $storageFactory = new StorageFactory();
+        $storage = $storageFactory->create($yaml->getAdapterConfiguration());
 
-        $notExecutedMigrations = (new GetNotExecutedMigrations($adapter))
+        $notExecutedMigrations = (new GetNotExecutedMigrations($storage))
         (
             $yaml->getMigrations(),
             $yaml->getVersions()
         );
 
         $dispatcher = new EventDispatcher();
-        $subscriber = new MigrationExecutedSubscriber($adapter);
+        $subscriber = new MigrationExecutedSubscriber($storage);
         $dispatcher->addSubscriber($subscriber);
 
-        return (new ExecuteVersion($dispatcher))($notExecutedMigrations);
+        return (new ExecuteVersion($dispatcher, new ProcessAdapter()))($notExecutedMigrations);
     }
 }

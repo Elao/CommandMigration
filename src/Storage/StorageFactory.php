@@ -1,12 +1,12 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Adapter;
+namespace Elao\ElaoCommandMigration\Storage;
 
 use Elao\ElaoCommandMigration\Parser\Exception\InvalidYamlSchemaException;
 
-final class AdapterFactory
+final class StorageFactory
 {
-    public function create(array $adapterConfiguration): AdapterInterface
+    public function create(array $adapterConfiguration): StorageInterface
     {
         if (!isset($adapterConfiguration['type'])) {
             throw new InvalidYamlSchemaException('Missing type of adapter');
@@ -18,10 +18,10 @@ final class AdapterFactory
                     throw new InvalidYamlSchemaException('Missing DSN parameter of dbal adapter');
                 }
 
-                return new DoctrineAdapter(
+                return new DoctrineStorage(
                     $adapterConfiguration['dsn'],
-                    $adapterConfiguration['table_name'] ?? DoctrineAdapter::TABLE_NAME,
-                    $adapterConfiguration['column_name'] ?? DoctrineAdapter::COLUMN_NAME
+                    $adapterConfiguration['table_name'] ?? DoctrineStorage::TABLE_NAME,
+                    $adapterConfiguration['column_name'] ?? DoctrineStorage::COLUMN_NAME
                 );
             default:
                 throw new InvalidYamlSchemaException('Missing compatible adapter');

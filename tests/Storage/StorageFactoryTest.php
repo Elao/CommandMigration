@@ -1,20 +1,20 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Tests\Adapter;
+namespace Elao\ElaoCommandMigration\Tests\Storage;
 
-use Elao\ElaoCommandMigration\Adapter\AdapterFactory;
-use Elao\ElaoCommandMigration\Adapter\DoctrineAdapter;
+use Elao\ElaoCommandMigration\Storage\StorageFactory;
+use Elao\ElaoCommandMigration\Storage\DoctrineStorage;
 use Elao\ElaoCommandMigration\Parser\Exception\InvalidYamlSchemaException;
 use PHPUnit\Framework\TestCase;
 
-class AdapterFactoryTest extends TestCase
+class StorageFactoryTest extends TestCase
 {
     public function testCreateWithoutType()
     {
         $this->expectException(InvalidYamlSchemaException::class);
         $configuration = [];
 
-        $factory = new AdapterFactory();
+        $factory = new StorageFactory();
         $factory->create($configuration);
     }
 
@@ -25,7 +25,7 @@ class AdapterFactoryTest extends TestCase
             'type' => 'unknown'
         ];
 
-        $factory = new AdapterFactory();
+        $factory = new StorageFactory();
         $factory->create($configuration);
     }
 
@@ -36,7 +36,7 @@ class AdapterFactoryTest extends TestCase
             'type' => 'dbal'
         ];
 
-        $factory = new AdapterFactory();
+        $factory = new StorageFactory();
         $factory->create($configuration);
     }
 
@@ -47,7 +47,7 @@ class AdapterFactoryTest extends TestCase
             'dsn' => 'mysql://root@127.0.0.1/my_database'
         ];
 
-        $factory = new AdapterFactory();
-        $this->assertInstanceOf(DoctrineAdapter::class, $factory->create($configuration));
+        $factory = new StorageFactory();
+        $this->assertInstanceOf(DoctrineStorage::class, $factory->create($configuration));
     }
 }

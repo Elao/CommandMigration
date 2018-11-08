@@ -1,6 +1,6 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Adapter;
+namespace Elao\ElaoCommandMigration\Storage;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Connections\MasterSlaveConnection;
@@ -9,7 +9,7 @@ use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Types\Type;
 use Elao\ElaoCommandMigration\Configuration\Factory\Doctrine\DBALConnectionFactory;
 
-final class DoctrineAdapter implements AdapterInterface
+final class DoctrineStorage implements StorageInterface
 {
     public const TABLE_NAME = 'command_migrations';
     public const COLUMN_NAME = 'version';

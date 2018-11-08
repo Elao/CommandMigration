@@ -17,11 +17,11 @@ class YamlParser implements ParserInterface
 
     public function getAdapterConfiguration(): array
     {
-        if (!isset($this->configuration['elao_command_migration']['adapter'])) {
+        if (!isset($this->configuration['elao_command_migration']['storage'])) {
             throw new InvalidYamlSchemaException('Missing adapter node');
         }
 
-        return $this->configuration['elao_command_migration']['adapter'];
+        return $this->configuration['elao_command_migration']['storage'];
     }
 
     public function getMigrations(): array

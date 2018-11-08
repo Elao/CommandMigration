@@ -18,7 +18,7 @@ Add a `elao_command_migration.yaml` file (in a not public directory of course!):
 
 ```yaml
 elao_command_migration:
-    adapter:
+    storage:
         type: dbal
         dsn: mysql://db_user@db_host/my_database_name
         table_name: 'command_migrations'

@@ -1,8 +1,8 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Adapter;
+namespace Elao\ElaoCommandMigration\Storage;
 
-interface AdapterInterface
+interface StorageInterface
 {
     public function initialize(): void;
 
