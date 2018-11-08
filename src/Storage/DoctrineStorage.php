@@ -73,7 +73,7 @@ final class DoctrineStorage implements StorageInterface
         $this->initialize();
 
         $results = $this->connection->fetchAll(
-            "SELECT " . $this->migrationsColumnName . " FROM " . $this->migrationsTableName
+            'SELECT ' . $this->migrationsColumnName . ' FROM ' . $this->migrationsTableName
         );
 
         return array_map('current', $results);

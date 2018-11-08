@@ -3,8 +3,8 @@
 namespace Elao\ElaoCommandMigration\Command;
 
 use Elao\ElaoCommandMigration\Process\Exception\ConnectionException;
-use Elao\ElaoCommandMigration\Process\Run;
 use Elao\ElaoCommandMigration\Process\ResultView;
+use Elao\ElaoCommandMigration\Process\Run;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -32,7 +32,7 @@ class RunCommand extends Command
 
         try {
             /** @var ResultView $resultView */
-            foreach($run() as $resultView) {
+            foreach ($run() as $resultView) {
                 if ($resultView->isSuccessful()) {
                     $symfonyStyle->success($resultView->getCommand());
                     ++$executedCommand;

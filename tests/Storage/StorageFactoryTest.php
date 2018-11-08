@@ -2,9 +2,9 @@
 
 namespace Elao\ElaoCommandMigration\Tests\Storage;
 
-use Elao\ElaoCommandMigration\Storage\StorageFactory;
-use Elao\ElaoCommandMigration\Storage\DoctrineStorage;
 use Elao\ElaoCommandMigration\Parser\Exception\InvalidYamlSchemaException;
+use Elao\ElaoCommandMigration\Storage\DoctrineStorage;
+use Elao\ElaoCommandMigration\Storage\StorageFactory;
 use PHPUnit\Framework\TestCase;
 
 class StorageFactoryTest extends TestCase
@@ -22,7 +22,7 @@ class StorageFactoryTest extends TestCase
     {
         $this->expectException(InvalidYamlSchemaException::class);
         $configuration = [
-            'type' => 'unknown'
+            'type' => 'unknown',
         ];
 
         $factory = new StorageFactory();
@@ -33,7 +33,7 @@ class StorageFactoryTest extends TestCase
     {
         $this->expectException(InvalidYamlSchemaException::class);
         $configuration = [
-            'type' => 'dbal'
+            'type' => 'dbal',
         ];
 
         $factory = new StorageFactory();
@@ -44,7 +44,7 @@ class StorageFactoryTest extends TestCase
     {
         $configuration = [
             'type' => 'dbal',
-            'dsn' => 'mysql://root@127.0.0.1/my_database'
+            'dsn' => 'mysql://root@127.0.0.1/my_database',
         ];
 
         $factory = new StorageFactory();

@@ -17,16 +17,16 @@ class ExecuteVersionTest extends TestCase
     {
         $migrations = [
             'identifier1' => [
-                'php bin/elaoCommandMigration inception.yml'
+                'php bin/elaoCommandMigration inception.yml',
             ],
-            '1234567890'  => [
+            '1234567890' => [
                 'php -r "echo \"toto\";"',
                 'php -r "echo \"test\";"',
             ],
         ];
 
         $eventDispatcher = $this->prophesize(EventDispatcherInterface::class);
-        $processAdapter  = $this->prophesize(ProcessAdapter::class);
+        $processAdapter = $this->prophesize(ProcessAdapter::class);
 
         $firstProcess = $this->prophesize(Process::class);
         $processAdapter->getProcess('php bin/elaoCommandMigration inception.yml')->shouldBeCalled()->willReturn($firstProcess);
