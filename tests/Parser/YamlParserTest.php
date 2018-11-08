@@ -9,7 +9,7 @@ use Symfony\Component\Yaml\Exception\ParseException;
 
 class YamlParserTest extends TestCase
 {
-    public function testFileNotExists()
+    public function testFileNotExists(): void
     {
         $this->expectException(ParseException::class);
         $this->expectExceptionMessage('File "not-exists.yaml" does not exist.');
@@ -17,7 +17,7 @@ class YamlParserTest extends TestCase
         new YamlParser('not-exists.yaml');
     }
 
-    public function testGetAdapterConfiguration()
+    public function testGetStorageConfiguration(): void
     {
         $yamlParser = new YamlParser(__DIR__ . '/../Fixtures/elao_command_migration.yaml');
         $this->assertEquals(
@@ -26,11 +26,11 @@ class YamlParserTest extends TestCase
                 'dsn' => 'mysql://root@127.0.0.1/my_database',
                 'table_name' => 'command_migrations',
             ],
-            $yamlParser->getAdapterConfiguration()
+            $yamlParser->getStorageConfiguration()
         );
     }
 
-    public function testGetMigrations()
+    public function testGetMigrations(): void
     {
         $yamlParser = new YamlParser(__DIR__ . '/../Fixtures/elao_command_migration.yaml');
         $this->assertSame(
@@ -47,7 +47,7 @@ class YamlParserTest extends TestCase
         );
     }
 
-    public function testGetMigrationsWithoutMigration()
+    public function testGetMigrationsWithoutMigration(): void
     {
         $this->expectException(InvalidYamlSchemaException::class);
         $this->expectExceptionMessage('Missing migrations node');
@@ -56,7 +56,7 @@ class YamlParserTest extends TestCase
         $yamlParser->getMigrations();
     }
 
-    public function testGetMigrationsNotAnArray()
+    public function testGetMigrationsNotAnArray(): void
     {
         $this->expectException(InvalidYamlSchemaException::class);
         $this->expectExceptionMessage('Missing migrations node');
@@ -65,7 +65,7 @@ class YamlParserTest extends TestCase
         $yamlParser->getMigrations();
     }
 
-    public function testGetVersions()
+    public function testGetVersions(): void
     {
         $yamlParser = new YamlParser(__DIR__ . '/../Fixtures/elao_command_migration.yaml');
         $this->assertEquals(
