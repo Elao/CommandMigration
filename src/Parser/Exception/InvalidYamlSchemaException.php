@@ -1,6 +1,6 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Parser\Exception;
+namespace Elao\CommandMigration\Parser\Exception;
 
 class InvalidYamlSchemaException extends \Exception
 {

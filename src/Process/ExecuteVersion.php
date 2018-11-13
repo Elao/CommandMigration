@@ -1,10 +1,10 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Process;
+namespace Elao\CommandMigration\Process;
 
-use Elao\ElaoCommandMigration\Adapter\ProcessAdapter;
-use Elao\ElaoCommandMigration\Event\MigrationExecutedEvent;
-use Elao\ElaoCommandMigration\Events;
+use Elao\CommandMigration\Adapter\ProcessAdapter;
+use Elao\CommandMigration\Event\MigrationExecutedEvent;
+use Elao\CommandMigration\Events;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class ExecuteVersion

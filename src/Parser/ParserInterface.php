@@ -1,6 +1,6 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Parser;
+namespace Elao\CommandMigration\Parser;
 
 interface ParserInterface
 {

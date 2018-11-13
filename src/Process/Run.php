@@ -1,12 +1,12 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Process;
+namespace Elao\CommandMigration\Process;
 
-use Elao\ElaoCommandMigration\Adapter\ProcessAdapter;
-use Elao\ElaoCommandMigration\Migration\GetNotExecutedMigrations;
-use Elao\ElaoCommandMigration\Parser\YamlParser;
-use Elao\ElaoCommandMigration\Storage\StorageFactory;
-use Elao\ElaoCommandMigration\Subscriber\MigrationExecutedSubscriber;
+use Elao\CommandMigration\Adapter\ProcessAdapter;
+use Elao\CommandMigration\Migration\GetNotExecutedMigrations;
+use Elao\CommandMigration\Parser\YamlParser;
+use Elao\CommandMigration\Storage\StorageFactory;
+use Elao\CommandMigration\Subscriber\MigrationExecutedSubscriber;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class Run

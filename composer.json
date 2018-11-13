@@ -1,5 +1,5 @@
 {
-    "name": "elao/elao-command-migration",
+    "name": "elao/command-migration",
     "description": "PHP lib to run commands, for example on deployment.",
     "license": "MIT",
     "keywords": [],
@@ -27,12 +27,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Elao\\ElaoCommandMigration\\": "src"
+            "Elao\\CommandMigration\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Elao\\ElaoCommandMigration\\Tests\\": "tests"
+            "Elao\\CommandMigration\\Tests\\": "tests"
         }
     },
     "require": {
@@ -47,5 +47,5 @@
         "phpunit/phpunit": "^7.0",
         "friendsofphp/php-cs-fixer": "^2.13"
     },
-    "bin": ["bin/elaoCommandMigration"]
+    "bin": ["bin/elao-command-migration"]
 }

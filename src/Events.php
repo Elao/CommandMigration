@@ -1,6 +1,6 @@
 <?php
 
-namespace Elao\ElaoCommandMigration;
+namespace Elao\CommandMigration;
 
 final class Events
 {

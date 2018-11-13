@@ -1,10 +1,10 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Tests\Storage;
+namespace Elao\CommandMigration\Tests\Storage;
 
-use Elao\ElaoCommandMigration\Parser\Exception\InvalidYamlSchemaException;
-use Elao\ElaoCommandMigration\Storage\DoctrineStorage;
-use Elao\ElaoCommandMigration\Storage\StorageFactory;
+use Elao\CommandMigration\Parser\Exception\InvalidYamlSchemaException;
+use Elao\CommandMigration\Storage\DoctrineStorage;
+use Elao\CommandMigration\Storage\StorageFactory;
 use PHPUnit\Framework\TestCase;
 
 class StorageFactoryTest extends TestCase

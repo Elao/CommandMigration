@@ -1,9 +1,9 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Tests\Parser;
+namespace Elao\CommandMigration\Tests\Parser;
 
-use Elao\ElaoCommandMigration\Parser\Exception\InvalidYamlSchemaException;
-use Elao\ElaoCommandMigration\Parser\YamlParser;
+use Elao\CommandMigration\Parser\Exception\InvalidYamlSchemaException;
+use Elao\CommandMigration\Parser\YamlParser;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Yaml\Exception\ParseException;
 

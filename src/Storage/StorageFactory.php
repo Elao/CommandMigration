@@ -1,8 +1,8 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Storage;
+namespace Elao\CommandMigration\Storage;
 
-use Elao\ElaoCommandMigration\Parser\Exception\InvalidYamlSchemaException;
+use Elao\CommandMigration\Parser\Exception\InvalidYamlSchemaException;
 
 final class StorageFactory
 {

@@ -1,14 +1,6 @@
 <?php
 
-/*
- * This file is part of the ElaoCommandMigration project.
- *
- * Copyright (C) ElaoCommandMigration
- *
- * @author Elao <contact@elao.com>
- */
-
-namespace Elao\ElaoCommandMigration\Adapter;
+namespace Elao\CommandMigration\Adapter;
 
 use Symfony\Component\Process\Process;
 
