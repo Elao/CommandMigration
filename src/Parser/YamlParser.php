@@ -4,7 +4,6 @@ namespace Elao\ElaoCommandMigration\Parser;
 
 use Elao\ElaoCommandMigration\Parser\Exception\InvalidYamlSchemaException;
 use Symfony\Component\Yaml\Yaml;
-use function is_array;
 
 class YamlParser implements ParserInterface
 {
@@ -28,7 +27,7 @@ class YamlParser implements ParserInterface
     public function getMigrations(): array
     {
         if (!isset($this->configuration['elao_command_migration']['migrations'])
-            || !is_array($this->configuration['elao_command_migration']['migrations'])
+            || !\is_array($this->configuration['elao_command_migration']['migrations'])
         ) {
             throw new InvalidYamlSchemaException('Missing migrations node');
         }

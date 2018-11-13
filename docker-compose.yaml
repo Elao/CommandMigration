@@ -32,4 +32,4 @@ services:
         networks:
             - proxy
         depends_on:
-            - database
+            - mysql

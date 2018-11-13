@@ -20,6 +20,7 @@ return PhpCsFixer\Config::create()
         'php_unit_no_expectation_annotation' => false,
         'array_syntax' => array('syntax' => 'short'),
         'fopen_flags' => false,
+        'native_function_invocation' => ['include' => ['@compiler_optimized']],
         'ordered_imports' => true,
         'protected_to_private' => false,
         'return_type_declaration' => ['space_before' => 'none'],
