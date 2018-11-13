@@ -1,0 +1,35 @@
+version: "3"
+
+networks:
+    proxy:
+        external:
+            name: proxy
+
+volumes:
+    db_data: ~
+
+services:
+    mysql:
+        image: mysql:5.6
+        volumes:
+            - db_data:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_DATABASE: elao_command_migration
+            MYSQL_USER: app
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_PASSWORD: password
+        ports:
+            - "3306:3306"
+        networks:
+            - proxy
+
+    php:
+        build: docker/php
+        working_dir: /srv
+        volumes:
+            - .:/srv
+        networks:
+            - proxy
+        depends_on:
+            - database

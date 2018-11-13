@@ -1,0 +1,26 @@
+image: php:7.2-fpm
+
+cache:
+    paths:
+    - vendor/
+
+before_script:
+- apt-get update -yqq
+- apt-get install git -yqq
+- docker-php-ext-install pdo_mysql
+- curl -sS https://getcomposer.org/installer | php
+- php composer.phar install
+
+services:
+- mysql:5.6
+
+variables:
+    MYSQL_DATABASE: elao_command_migration
+    MYSQL_USER: app
+    MYSQL_PASSWORD: password
+    MYSQL_ROOT_PASSWORD: password
+
+test:elao_command_migration:
+    script:
+    - php vendor/bin/phpunit --testsuite "Project Test Suite"
+    - php vendor/bin/phpunit --testsuite "E2E Test Suite"

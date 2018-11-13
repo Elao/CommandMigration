@@ -1,0 +1,9 @@
+elao_command_migration:
+    storage:
+        type: dbal
+        dsn: mysql://app:password@mysql/elao_command_migration
+        table_name: 'command_migrations'
+    migrations:
+        20181112153014:
+            - php -r "echo \"test\";"
+            - touch elao_command_migration_test.txt
