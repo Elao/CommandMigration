@@ -1,8 +1,8 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Migration;
+namespace Elao\CommandMigration\Migration;
 
-use Elao\ElaoCommandMigration\Storage\StorageInterface;
+use Elao\CommandMigration\Storage\StorageInterface;
 
 class GetNotExecutedMigrations
 {

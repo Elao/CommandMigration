@@ -4,6 +4,6 @@ elao_command_migration:
         dsn: mysql://app:password@mysql/elao_command_migration
         table_name: 'command_migrations'
     migrations:
-        20181112153014:
+        20181112153017:
             - php -r "echo \"test\";"
             - touch elao_command_migration_test.txt

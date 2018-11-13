@@ -1,6 +1,6 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Storage;
+namespace Elao\CommandMigration\Storage;
 
 interface StorageInterface
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Command;
+namespace Elao\CommandMigration\Command;
 
-use Elao\ElaoCommandMigration\Process\Exception\ConnectionException;
-use Elao\ElaoCommandMigration\Process\ResultView;
-use Elao\ElaoCommandMigration\Process\Run;
+use Elao\CommandMigration\Process\Exception\ConnectionException;
+use Elao\CommandMigration\Process\ResultView;
+use Elao\CommandMigration\Process\Run;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

@@ -1,10 +1,10 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Subscriber;
+namespace Elao\CommandMigration\Subscriber;
 
-use Elao\ElaoCommandMigration\Event\MigrationExecutedEvent;
-use Elao\ElaoCommandMigration\Events;
-use Elao\ElaoCommandMigration\Storage\StorageInterface;
+use Elao\CommandMigration\Event\MigrationExecutedEvent;
+use Elao\CommandMigration\Events;
+use Elao\CommandMigration\Storage\StorageInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class MigrationExecutedSubscriber implements EventSubscriberInterface

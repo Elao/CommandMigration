@@ -3,7 +3,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Elao\ElaoCommandMigration\Command\RunCommand;
+use Elao\CommandMigration\Command\RunCommand;
 use Symfony\Component\Console\Application;
 
 $runCommand = new RunCommand();

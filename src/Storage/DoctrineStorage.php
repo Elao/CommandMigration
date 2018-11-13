@@ -1,13 +1,13 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Storage;
+namespace Elao\CommandMigration\Storage;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Connections\MasterSlaveConnection;
 use Doctrine\DBAL\Schema\Column;
 use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Types\Type;
-use Elao\ElaoCommandMigration\Configuration\Factory\Doctrine\DBALConnectionFactory;
+use Elao\CommandMigration\Configuration\Factory\Doctrine\DBALConnectionFactory;
 
 final class DoctrineStorage implements StorageInterface
 {

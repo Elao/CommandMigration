@@ -1,4 +1,4 @@
-# ElaoCommandMigration
+# CommandMigration
 
 PHP library to run commands, for example on deployment.
 
@@ -12,7 +12,7 @@ This library allow you to declare in your feature git branch what command(s) nee
 
 ## Install
 
-    $ composer require elao/elao-command-migration
+    $ composer require elao/command-migration
 
 Add a `elao_command_migration.yaml` file (in a not public directory of course!):
 
@@ -48,11 +48,11 @@ elao_command_migration:
 
 Entries in `migrations` could have whatever identifier, but we recommend to use a date + time format: YYYYMMDDHHMMSS
 
-Run `php bin/elaoCommandMigration path/to/elao_command_migration.yaml` to test it.
+Run `php bin/elao-command-migration path/to/elao_command_migration.yaml` to test it.
 
 ## Integration
 
-Add `php bin/elaoCommandMigration path/to/elao_command_migration.yaml`
+Add `php bin/elao-command-migration path/to/elao_command_migration.yaml`
 to your deployment process.
 
 ### Capifony
@@ -65,7 +65,7 @@ Set in deploy.rb:
     namespace :app_tasks do
       task :elao_command_migration do
         capifony_pretty_print "--> Run command migrations"
-        invoke_command "php bin/elaoCommandMigration path/to/elao_command_migration.yaml", :via => run_method
+        invoke_command "php bin/elao-command-migration path/to/elao_command_migration.yaml", :via => run_method
         capifony_puts_ok
       end
     end
@@ -77,19 +77,19 @@ With [Manala/ansible-role-deploy](https://github.com/manala/ansible-role-deploy)
 
 ```yaml
     manala_deploy_tasks:
-      - command: php bin/elaoCommandMigration path/to/elao_command_migration.yaml
+      - command: php bin/elao-command-migration path/to/elao_command_migration.yaml
 ```
 
 or
 
 ```yaml
     manala_deploy_post_tasks:
-      - command: php bin/elaoCommandMigration path/to/elao_command_migration.yaml
+      - command: php bin/elao-command-migration path/to/elao_command_migration.yaml
 ```
 
 ## How it works
 
-ElaoCommandMigration is very inspired by [Doctrine Migrations](https://github.com/doctrine/migrations) but
+CommandMigration is very inspired by [Doctrine Migrations](https://github.com/doctrine/migrations) but
 for running commands.
 
 The `elao:command-migration:run` command :

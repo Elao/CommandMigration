@@ -1,6 +1,6 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Process;
+namespace Elao\CommandMigration\Process;
 
 class ResultView
 {

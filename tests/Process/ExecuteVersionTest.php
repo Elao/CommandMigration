@@ -1,12 +1,12 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Tests\Process;
+namespace Elao\CommandMigration\Tests\Process;
 
-use Elao\ElaoCommandMigration\Adapter\ProcessAdapter;
-use Elao\ElaoCommandMigration\Event\MigrationExecutedEvent;
-use Elao\ElaoCommandMigration\Events;
-use Elao\ElaoCommandMigration\Process\ExecuteVersion;
-use Elao\ElaoCommandMigration\Process\ResultView;
+use Elao\CommandMigration\Adapter\ProcessAdapter;
+use Elao\CommandMigration\Event\MigrationExecutedEvent;
+use Elao\CommandMigration\Events;
+use Elao\CommandMigration\Process\ExecuteVersion;
+use Elao\CommandMigration\Process\ResultView;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Process\Process;
@@ -17,7 +17,7 @@ class ExecuteVersionTest extends TestCase
     {
         $migrations = [
             'identifier1' => [
-                'php bin/elaoCommandMigration inception.yml',
+                'php bin/elao-command-migration inception.yml',
             ],
             '1234567890' => [
                 'php -r "echo \"toto\";"',
@@ -29,7 +29,7 @@ class ExecuteVersionTest extends TestCase
         $processAdapter = $this->prophesize(ProcessAdapter::class);
 
         $firstProcess = $this->prophesize(Process::class);
-        $processAdapter->getProcess('php bin/elaoCommandMigration inception.yml')->shouldBeCalled()->willReturn($firstProcess);
+        $processAdapter->getProcess('php bin/elao-command-migration inception.yml')->shouldBeCalled()->willReturn($firstProcess);
         $firstProcess->run()->shouldBeCalled();
         $firstProcess->isSuccessful()->shouldBeCalled()->willReturn(false);
         $firstProcess->getErrorOutput()->shouldBeCalled()->willReturn('Endless spinning');
@@ -53,7 +53,7 @@ class ExecuteVersionTest extends TestCase
         $generators = $executeVersion($migrations);
 
         $expected = [
-            0 => new ResultView(false, 'php bin/elaoCommandMigration inception.yml', 'Endless spinning'),
+            0 => new ResultView(false, 'php bin/elao-command-migration inception.yml', 'Endless spinning'),
             1 => new ResultView(true, 'php -r "echo \"toto\";"', ''),
             2 => new ResultView(true, 'php -r "echo \"test\";"', ''),
         ];

@@ -1,8 +1,8 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Parser;
+namespace Elao\CommandMigration\Parser;
 
-use Elao\ElaoCommandMigration\Parser\Exception\InvalidYamlSchemaException;
+use Elao\CommandMigration\Parser\Exception\InvalidYamlSchemaException;
 use Symfony\Component\Yaml\Yaml;
 
 class YamlParser implements ParserInterface

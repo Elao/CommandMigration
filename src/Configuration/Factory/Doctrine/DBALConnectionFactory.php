@@ -1,6 +1,6 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Configuration\Factory\Doctrine;
+namespace Elao\CommandMigration\Configuration\Factory\Doctrine;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\ConnectionException;

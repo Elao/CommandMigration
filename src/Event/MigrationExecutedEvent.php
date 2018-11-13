@@ -1,6 +1,6 @@
 <?php
 
-namespace Elao\ElaoCommandMigration\Event;
+namespace Elao\CommandMigration\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 
