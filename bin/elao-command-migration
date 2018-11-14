@@ -1,10 +1,21 @@
 #!/usr/bin/env php
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
-
 use Elao\CommandMigration\Command\RunCommand;
 use Symfony\Component\Console\Application;
+
+function includeIfExists(string $file): bool
+{
+    return file_exists($file) && include $file;
+}
+
+if (
+    !includeIfExists(__DIR__ . '/../../../autoload.php') &&
+    !includeIfExists(__DIR__ . '/../vendor/autoload.php')
+) {
+    fwrite(STDERR, 'Install dependencies using Composer.'.PHP_EOL);
+    exit(1);
+}
 
 $runCommand = new RunCommand();
 $application = new Application();
