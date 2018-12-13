@@ -1,0 +1,49 @@
+{
+  "name": "elao/command-migration-bundle",
+  "description": "Symfony Bundle to use the PHP lib to run commands, for example on deployment.",
+  "license": "MIT",
+  "keywords": [],
+  "authors": [
+    {
+      "name": "Elao",
+      "homepage": "https://www.elao.com"
+    },
+    {
+      "name": "Nicolas Dievart",
+      "homepage": "https://github.com/NicolasDievart"
+    },
+    {
+      "name": "Cindy Liwenge",
+      "homepage": "https://github.com/Kinedie"
+    },
+    {
+      "name": "Richard Hanna",
+      "homepage": "https://github.com/supertanuki"
+    },
+    {
+      "name": "Mathieu Marchois",
+      "homepage": "https://github.com/mmarchois"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Elao\\CommandMigrationBundle\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Elao\\CommandMigrationBundle\\Tests\\": "tests"
+    }
+  },
+  "require": {
+    "php": ">=7.2.0",
+    "elao/command-migration": "^2.0",
+    "symfony/console": "~3.4|~4.1",
+    "symfony/dependency-injection": "~3.4|~4.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.0",
+    "friendsofphp/php-cs-fixer": "^2.13"
+  },
+  "bin": ["bin/elao-command-migration"]
+}

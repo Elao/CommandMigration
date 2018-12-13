@@ -1,25 +1,36 @@
 <?php
 
-namespace Elao\CommandMigration\Command;
+namespace Elao\CommandMigrationBundle\Command;
 
-use Elao\CommandMigration\Parser\YamlParser;
 use Elao\CommandMigration\Process\Exception\ConnectionException;
 use Elao\CommandMigration\Process\ResultView;
 use Elao\CommandMigration\Process\Run;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 class RunCommand extends Command
 {
+    public const NAME = 'elao:command-migration:run';
+
+    private $storageConfiguration, $migrations;
+
+    public function __construct(
+        array $storageConfiguration,
+        array $migrations
+    ) {
+        parent::__construct(self::NAME);
+
+        $this->storageConfiguration = $storageConfiguration;
+        $this->migrations = $migrations;
+    }
+
     public function configure(): void
     {
         $this
-            ->setName('elao:command-migration:run')
+            ->setName(self::NAME)
             ->setDescription('Run command migrations')
-            ->addArgument('path', InputArgument::REQUIRED, 'Migration configuration path')
         ;
     }
 
@@ -28,13 +39,13 @@ class RunCommand extends Command
         $symfonyStyle = new SymfonyStyle($input, $output);
         $symfonyStyle->title('Starting command migrations');
 
-        $yaml = new YamlParser($input->getArgument('path'));
-        $run = (new Run())($yaml->getStorageConfiguration(), $yaml->getMigrations(), $yaml->getVersions());
+        $run = new Run();
+        $versions = array_keys($this->migrations);
         $executedCommand = 0;
 
         try {
             /** @var ResultView $resultView */
-            foreach ($run() as $resultView) {
+            foreach ($run($this->storageConfiguration, $this->migrations, $versions) as $resultView) {
                 if ($resultView->isSuccessful()) {
                     $symfonyStyle->success($resultView->getCommand());
                     ++$executedCommand;
