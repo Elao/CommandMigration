@@ -1,6 +1,6 @@
 <?php
 
-namespace Elao\CommandMigrationBundle\DependencyInjection;
+namespace Elao\CommandMigration\Bridge\Symfony\Bundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

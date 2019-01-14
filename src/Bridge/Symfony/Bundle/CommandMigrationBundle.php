@@ -1,6 +1,6 @@
 <?php
 
-namespace Elao\CommandMigrationBundle;
+namespace Elao\CommandMigration\Bridge\Symfony\Bundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

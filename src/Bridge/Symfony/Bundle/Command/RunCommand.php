@@ -1,6 +1,6 @@
 <?php
 
-namespace Elao\CommandMigrationBundle\Command;
+namespace Elao\CommandMigration\Bridge\Symfony\Bundle\Command;
 
 use Elao\CommandMigration\Process\Exception\ConnectionException;
 use Elao\CommandMigration\Process\ResultView;
