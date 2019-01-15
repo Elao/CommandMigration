@@ -29,12 +29,12 @@ class RunCommand extends Command
         $symfonyStyle->title('Starting command migrations');
 
         $yaml = new YamlParser($input->getArgument('path'));
-        $run = (new Run())($yaml->getStorageConfiguration(), $yaml->getMigrations(), $yaml->getVersions());
+        $run = new Run();
         $executedCommand = 0;
 
         try {
             /** @var ResultView $resultView */
-            foreach ($run() as $resultView) {
+            foreach ($run($yaml->getStorageConfiguration(), $yaml->getMigrations(), $yaml->getVersions()) as $resultView) {
                 if ($resultView->isSuccessful()) {
                     $symfonyStyle->success($resultView->getCommand());
                     ++$executedCommand;
