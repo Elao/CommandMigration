@@ -11,24 +11,15 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class Run
 {
-    /** @var string */
-    private $configurationFilePath;
-
-    public function __construct(string $configurationFilePath)
+    public function __invoke(array $storageConfiguration, array $migrations, array $versions): \Generator
     {
-        $this->configurationFilePath = $configurationFilePath;
-    }
-
-    public function __invoke(): \Generator
-    {
-        $yaml = new YamlParser($this->configurationFilePath);
         $storageFactory = new StorageFactory();
-        $storage = $storageFactory->create($yaml->getStorageConfiguration());
+        $storage = $storageFactory->create($storageConfiguration);
 
         $notExecutedMigrations = (new GetNotExecutedMigrations($storage))
         (
-            $yaml->getMigrations(),
-            $yaml->getVersions()
+            $migrations,
+            $versions
         );
 
         $dispatcher = new EventDispatcher();
