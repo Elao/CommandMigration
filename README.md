@@ -13,6 +13,24 @@ This library allow you to declare in your feature git branch what command(s) nee
 ## Install
 
     $ composer require elao/command-migration
+**Enable the bundle on Symfony <= 3.4 (app/AppKernel.php)**
+      
+    public function registerBundles()
+    {
+        $bundles = array(
+            // ...
+            new Elao\CommandMigration\Bridge\Symfony\Bundle\CommandMigrationBundle(),
+            // ...
+        );
+    }
+
+**Enable the bundle on Symfony 4 (config/bundles.php)**
+    
+    return [
+        // ...
+        Elao\CommandMigration\Bridge\Symfony\Bundle\CommandMigrationBundle::class => ['all' => true],
+        // ...
+    ];
 
 Add a `elao_command_migration.yaml` file (in a not public directory of course!):
 
@@ -20,7 +38,7 @@ Add a `elao_command_migration.yaml` file (in a not public directory of course!):
 elao_command_migration:
     storage:
         type: dbal
-        dsn: mysql://db_user@db_host/my_database_name
+        dsn: '%env(DATABASE_DSN)%'
         table_name: 'command_migrations'
     migrations: []
 ```
